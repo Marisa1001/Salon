@@ -1,6 +1,7 @@
 __version__ = "0.1"
 #importando flask
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 #generar claves de envio o trabajo
 import secrets
  
@@ -14,6 +15,12 @@ app = Flask(__name__, template_folder="views")
 #configuracion imagenes
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+#conexion a la base de datos
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root@localhost/dbpysalon"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
+
+db = SQLAlchemy(app)
 
 #codigos de encriptado
 secret = secrets.token_urlsafe(32)
