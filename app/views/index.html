@@ -3,10 +3,30 @@
 <!-- Inicio bloque body -->
 {% block body %}
   <div class="container">
-    <h1 class="mt-5">Nombre : {{user.name}}</h1>
-    <h1 class="mt-5">Apellido : {{user.surname}}</h1>
-    <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code class="small">padding-top: 60px;</code> on the <code class="small">main &gt; .container</code>.</p>
-    <p>Back to <a href="">the default sticky footer</a> minus the navbar.</p>
+    <h1 class="mt-5">USUARIOS</h1>
+    <table class="table bg-light">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Cargo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in users %}
+        <tr>
+          <td>{{row.id}}</td>
+          <td>{{row.name}}</td>
+          <td>{{row.email}}</td>
+          <td>{{row.username}}</td>
+          <td>{{row.cargo}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
   </div>
  
 {% endblock %}
