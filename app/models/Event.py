@@ -5,7 +5,7 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     event = db.Column(db.String(50))
     description = db.Column(db.String(200))
-    price = db.Column(db.String(50))
+    price = db.Column(db.Integer)
     
 
     #relacion uno a muchos con contract

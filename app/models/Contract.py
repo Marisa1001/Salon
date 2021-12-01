@@ -4,8 +4,9 @@ from app.models.Service import Service
 class Contract(db.Model):
     __tablename__ = "contracts"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    color = db.Column(db.String(50))
     date = db.Column(db.Date)
-    total = db.Column(db.String(50))
+    total = db.Column(db.Integer)
 
     #relacion uno a muchos con services
     service = db.relationship("Sevice", back_populates="contracts")

@@ -33,3 +33,6 @@ app.debug = True
 #esto usamos si trabajamos con rutas 
 from app.routes.main_router import main_router
 app.register_blueprint(main_router)
+
+from app.routes.contract_router import contract_router
+app.register_blueprint(contract_router)
