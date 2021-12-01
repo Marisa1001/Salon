@@ -19,19 +19,19 @@
             <a class="nav-link  mx-1" aria-current="page" href="/#">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active disabled mx-1" href="/contracts">Contratos</a>
+            <a class="nav-link  mx-1" href="/contracts">Contratos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  mx-1" href="/clientss">Clientes</a>
+            <a class="nav-link mx-1" href="/clientss">Clientes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  mx-1" href="/servicess">Servicios</a>
+            <a class="nav-link  active disabled mx-1" href="/servicess">Servicios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-1" href="/eventss">Eventos</a>
+            <a class="nav-link   mx-1" href="/eventss">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-1" href="/users">Usuarios</a>
+            <a class="nav-link dmx-1" href="/users">Usuarios</a>
           </li>
         </ul>
         
@@ -43,15 +43,34 @@
 <section class="container my-5">
   <div class="content">
         <div class="row">
-            <h1>Contratos</h1>
+            <h1>Registrar Nuevo Servicio Adicional</h1>
             <hr>
-            <br>
-            <a href="{{url_for('contract_router.create')}}" class="btn btn-secondary my-2">Nuevo Contrato</a>
         </div>
   </div>
 </section>
 
-
+<div class="container">
+<form>
+<div class="mb-3">
+  <label for="" class="form-label">Nombre Servicio</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+</div>
+<div class="mb-3">
+  <label for="" class="form-label">Descripcion</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+</div>
+<div class="mb-3">
+  <label for="" class="form-label">Precio</label>
+  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+</div>
+<br>
+<button type="submit" class="btn btn-dark">Guardar</button>
+<br>
+<br>
+<br>
+<br>
+</form>
+</div>
 
 {% endblock %}
 <!-- Fin bloque body -->

@@ -19,19 +19,19 @@
             <a class="nav-link  mx-1" aria-current="page" href="/#">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active disabled mx-1" href="/contracts">Contratos</a>
+            <a class="nav-link  mx-1" href="/contracts">Contratos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  mx-1" href="/clientss">Clientes</a>
+            <a class="nav-link mx-1" href="/clientss">Clientes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link  mx-1" href="/servicess">Servicios</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-1" href="/eventss">Eventos</a>
+            <a class="nav-link active disabled  mx-1" href="/eventss">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-1" href="/users">Usuarios</a>
+            <a class="nav-link dmx-1" href="/users">Usuarios</a>
           </li>
         </ul>
         
@@ -43,15 +43,13 @@
 <section class="container my-5">
   <div class="content">
         <div class="row">
-            <h1>Contratos</h1>
+            <h1>Tipos de Evento</h1>
             <hr>
             <br>
-            <a href="{{url_for('contract_router.create')}}" class="btn btn-secondary my-2">Nuevo Contrato</a>
+            <a href="{{url_for('event_router.create')}}" class="btn btn-secondary my-2">Nuevo Tipo de Evento</a>
         </div>
   </div>
 </section>
-
-
 
 {% endblock %}
 <!-- Fin bloque body -->

@@ -34,5 +34,17 @@ app.debug = True
 from app.routes.main_router import main_router
 app.register_blueprint(main_router)
 
+from app.routes.client_router import client_router
+app.register_blueprint(client_router)
+
 from app.routes.contract_router import contract_router
 app.register_blueprint(contract_router)
+
+from app.routes.event_router import event_router
+app.register_blueprint(event_router)
+
+from app.routes.service_router import service_router
+app.register_blueprint(service_router)
+
+from app.routes.user_router import user_router
+app.register_blueprint(user_router)
