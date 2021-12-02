@@ -22,15 +22,6 @@
             <a class="nav-link active disabled mx-1" href="/contracts">Contratos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  mx-1" href="/clientss">Clientes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  mx-1" href="/servicess">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-1" href="/eventss">Eventos</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link mx-1" href="/users">Usuarios</a>
           </li>
         </ul>
@@ -43,6 +34,20 @@
 <section class="container my-5">
   <div class="content">
         <div class="row">
+          
+          {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Hey!</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+           
+              {% endfor%}
+              {% endif %}
+              {% endwith%}
+              
+          
             <h1>Contratos</h1>
             <hr>
             <br>

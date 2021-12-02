@@ -13,3 +13,7 @@ def index():
 @contract_router.route('/contracts/create',methods=['GET'])
 def create():
     return contractcontroller.create()   
+
+@contract_router.route('/contracts/store',methods=['POST'])
+def store():
+    return contractcontroller.store()   

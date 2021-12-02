@@ -22,15 +22,6 @@
             <a class="nav-link active disabled mx-1" href="/contracts">Contratos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  mx-1" href="/clientss">Clientes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  mx-1" href="/servicess">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link  mx-1" href="/eventss">Eventos</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link mx-1" href="/users">Usuarios</a>
           </li>
         </ul>
@@ -50,66 +41,56 @@
 </section>
 
 <div class="container">
-  <form>
+  <form action="{{url_for('contract_router.store')}}" method="POST" >
     <div class="mb-3">
-      <label for="" class="form-label">Nombre Cliente</label>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Seleccionar Cliente</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <label for="contract" class="form-label">Nombre y Apellido Cliente</label>
+      <input type="text" class="form-control" name="client">
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Tipo de Evento</label>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Seleccionar Tipo de Evento</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <input type="text" class="form-control" name="tipe">
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Color</label>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Seleccionar Tipo de Evento</option>
-        <option value="1">Rojo</option>
-        <option value="2">Naranja</option>
-        <option value="3">Lila</option>
-        <option value="4">Azul</option>
-        <option value="5">Morado</option>
-        <option value="6">Verde</option>
-        <option value="7">Dorado</option>
-        <option value="8">Celeste</option>
+      <select class="form-select" name="color">
+        <option selected>Seleccionar Color Adornado</option>
+        <option value="Rojo">Rojo</option>
+        <option value="Naranja">Naranja</option>
+        <option value="Lila">Lila</option>
+        <option value="Azul">Azul</option>
+        <option value="Morado">Morado</option>
+        <option value="Verde">Verde</option>
+        <option value="Dorado">Dorado</option>
+        <option value="Celeste">Celeste</option>
       </select>
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Fecha</label>
-      <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="date" class="form-control" name="date">
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Servicios Adicionales</label>
       <br>
       <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <input class="form-check-input" type="checkbox">
         <label class="form-check-label" for="inlineCheckbox1">Amplificacion</label>
       </div>
       <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <input class="form-check-input" type="checkbox">
         <label class="form-check-label" for="inlineCheckbox1">Garzones</label>
       </div>
       <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <input class="form-check-input" type="checkbox">
         <label class="form-check-label" for="inlineCheckbox1">Bocaditos</label>
       </div>
       <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <input class="form-check-input" type="checkbox">
         <label class="form-check-label" for="inlineCheckbox1">Animador</label>
       </div>
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Total</label>
-      <input type="numbers" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="number" class="form-control" name="total">
     </div>
     <br>
     <button type="submit" class="btn btn-dark">Guardar</button>
