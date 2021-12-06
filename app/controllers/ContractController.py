@@ -9,8 +9,8 @@ class ContractController():
  
     #se retorna el metodo index igual con self
     def index1(self):
-        #users = User.query.all()
-        return render_template('contracts/index.html')
+        contracts = Contract.query.all()
+        return render_template('contracts/index.html', contracts = contracts)
 
     def create(self):
         #users = User.query.all()

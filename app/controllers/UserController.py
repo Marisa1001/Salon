@@ -8,8 +8,8 @@ class UserController():
  
     #se retorna el metodo index igual con self
     def index5(self):
-        #users = User.query.all()
-        return render_template('users/index.html')
+        users = User.query.all()
+        return render_template('users/index.html',users = users)
     def create(self):
         #users = User.query.all()
         return render_template('users/create.html')

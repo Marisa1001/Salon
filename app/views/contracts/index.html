@@ -47,11 +47,41 @@
               {% endif %}
               {% endwith%}
               
-          
+            
             <h1>Contratos</h1>
             <hr>
             <br>
             <a href="{{url_for('contract_router.create')}}" class="btn btn-secondary my-2">Nuevo Contrato</a>
+
+        </div>
+        <br>
+        <div class="container"> 
+          <table class="table table-bordered table-light">
+            <thead>
+              <tr>
+                <!--<th scope="col">#</th>-->
+                <th scope="col">Nombre Cliente</th>
+                <th scope="col">Tipo de Evento</th>
+                <th scope="col">Fecha de Evento</th>
+                <th scope="col">Color Adornado</th>
+                <th scope="col">Total pago</th>
+                <th scope="col">Usuario</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in contracts %}
+              <tr>
+                 <!--<td>{{data.id}}</td>-->
+                <td>{{data.client}}</td>
+                <td>{{data.tipe}}</td>
+                <td>{{data.date}}</td>
+                <td>{{data.color}}</td>
+                <td>{{data.total}}</td>
+                <td>{{data.user_id}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
         </div>
   </div>
 </section>
