@@ -21,3 +21,11 @@ def store():
 @user_router.route('/users/<int:id>/delete',methods=['GET'])
 def delete(id):
     return usercontroller.delete(id)   
+
+@user_router.route('/users/<int:id>/edit',methods=['GET'])
+def edit(id):
+    return usercontroller.edit(id)  
+
+@user_router.route('/users/<int:id>/update',methods=['POST'])
+def update(id):
+    return usercontroller.update(id)  

@@ -35,4 +35,26 @@ class UserController():
         flash('El usuario se ha eliminado con exito')
         return redirect(url_for('user_router.index'))
 
+    def edit(self, _id):
+        user = User.query.get(_id)
+        return render_template('users/edit.html', user = user)
+    
+    def update(self, _id):
+        if request.method == 'POST':
+            namev = request.form['name']
+            emailv = request.form['email']
+            usernamev = request.form['username']
+            passwordv = request.form['password']
+            cargov = request.form['cargo']
+            #from app.models.Alumno import Alumno
+            userDB = User.query.get(_id)
+            userDB.name = namev
+            userDB.email = emailv
+            userDB.username = usernamev
+            userDB.password = passwordv
+            userDB.cargo = cargov
+            db.session.commit()
+            flash('El usuario se ha editado correctamente!!!')
+            return redirect(url_for('user_router.index'))
+
 usercontroller = UserController()

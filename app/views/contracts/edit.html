@@ -6,7 +6,7 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand mx-5" href="/#" class="titulogolden">
+      <a class="navbar-brand mx-5" href="/" class="titulogolden">
         <img src="https://i.pinimg.com/originals/37/da/a7/37daa7a295d1c30859c0959624187e6a.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
         Golden Eventos
       </a>
@@ -16,22 +16,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link mx-1" aria-current="page" href="/#">Inicio</a>
+            <a class="nav-link  mx-1" aria-current="page" href="/">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active disabled mx-1" href="/contracts">Contratos</a>
+            <a class="nav-link active mx-1" href="/contracts">Contratos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  mx-1" href="/clientss">Clientes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-1" href="/servicess">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link mx-1" href="/eventss">Eventos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled mx-1" href="/users">Usuarios</a>
+            <a class="nav-link mx-1" href="/users">Usuarios</a>
           </li>
         </ul>
         
@@ -39,41 +30,77 @@
     </div>
   </nav>
 </header>
- <!--<div class="container">
-    <h1 class="mt-5">USUARIOS</h1>
-    <table class="table bg-light">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Email</th>
-          <th scope="col">Usuario</th>
-          <th scope="col">Cargo</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for row in users %}
-        <tr>
-          <td>{{row.id}}</td>
-          <td>{{row.name}}</td>
-          <td>{{row.email}}</td>
-          <td>{{row.username}}</td>
-          <td>{{row.cargo}}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    
-  </div>--> 
-  <section class="container my-5">
+ 
+<section class="container my-5">
       <div class="content">
             <div class="row">
-                <h1>edit</h1>
-               
-
+                <h1>Registrar Nuevo Contrato</h1>
+                <hr>
             </div>
       </div>
-  </section>
+</section>
+
+<div class="container">
+  <form action="{{url_for('contract_router.update', id = contract.id)}}" method="POST" >
+    <div class="mb-3">
+      <label for="contract" class="form-label">Nombre y Apellido Cliente</label>
+      <input type="text" class="form-control" value="{{contract.client}}" name="client">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Tipo de Evento</label>
+      <input type="text" class="form-control" value="{{contract.tipe}}" name="tipe">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Color</label>
+      <select class="form-select" value="{{contract.color}}" name="color">
+        <!--<option selected>Seleccionar Color Adornado</option>-->
+        <option value="Rojo">Rojo</option>
+        <option value="Naranja">Naranja</option>
+        <option value="Lila">Lila</option>
+        <option value="Azul">Azul</option>
+        <option value="Morado">Morado</option>
+        <option value="Verde">Verde</option>
+        <option value="Dorado">Dorado</option>
+        <option value="Celeste">Celeste</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Fecha</label>
+      <input type="date" class="form-control" value="{{contract.date}}" name="date">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Servicios Adicionales</label>
+      <br>
+      <div class="form-check form-check-inline mx-3">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label" for="inlineCheckbox1">Amplificacion</label>
+      </div>
+      <div class="form-check form-check-inline mx-3">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label" for="inlineCheckbox1">Garzones</label>
+      </div>
+      <div class="form-check form-check-inline mx-3">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label" for="inlineCheckbox1">Bocaditos</label>
+      </div>
+      <div class="form-check form-check-inline mx-3">
+        <input class="form-check-input" type="checkbox">
+        <label class="form-check-label" for="inlineCheckbox1">Animador</label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Total</label>
+      <input type="number" class="form-control" value="{{contract.total}}" name="total">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-dark">Guardar</button>
+    <br>
+    <br>
+    <br>
+    <br>
+  </form>
+</div>
+
 
 {% endblock %}
 <!-- Fin bloque body -->

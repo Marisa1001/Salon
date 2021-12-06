@@ -6,7 +6,7 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand mx-5" href="#" class="titulogolden" href="/#">
+      <a class="navbar-brand mx-5" href="/" class="titulogolden" href="/#">
         <img src="https://i.pinimg.com/originals/37/da/a7/37daa7a295d1c30859c0959624187e6a.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
         Golden Eventos
       </a>
@@ -16,22 +16,13 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link  mx-1" aria-current="page" href="/#">Inicio</a>
+            <a class="nav-link  mx-1" aria-current="page" href="/">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link  mx-1" href="/contracts">Contratos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-1" href="/clientss">Clientes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link   mx-1" href="/servicess">Servicios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link   mx-1" href="/eventss">Eventos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active disabled mx-1" href="/users">Usuarios</a>
+            <a class="nav-link active mx-1" href="/users">Usuarios</a>
           </li>
         </ul>
         
@@ -40,13 +31,49 @@
   </nav>
 </header>
  
-  <section class="container my-5">
-      <div class="content">
-            <div class="row">
-                <h1>Usuarios / Trabajadores</h1>
-            </div>
-      </div>
-  </section>
+<section class="container my-5">
+  <div class="content">
+        <div class="row">
+            <h1>Registrar Nuevo Usuario</h1>
+            <hr>
+        </div>
+  </div>
+</section>
+
+<div class="container">
+  <form action="{{url_for('user_router.update', id = user.id)}}" method="POST" >
+    <div class="mb-3">
+      <label for="user" class="form-label">Nombre y Apellido Usuario</label>
+      <input type="text" class="form-control" value="{{user.name}}" name="name">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Email</label>
+      <input type="email" class="form-control" value="{{user.email}}" name="email">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Nombre de Usuario</label>
+      <input type="text" class="form-control" value="{{user.username}}" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Contrasena</label>
+      <input type="password" class="form-control" value="{{user.password}}" name="password">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Cargo</label>
+      <select class="form-select" value="{{user.cargo}}" name="cargo">
+        <!--<option selected>Seleccionar Cargo</option>-->
+        <option value="administrador">Administrador</option>
+        <option value="secretario">Secretario</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-dark">Guardar</button>
+    <br>
+    <br>
+    <br>
+    <br>
+  </form>
+</div>
 
 {% endblock %}
 <!-- Fin bloque body -->

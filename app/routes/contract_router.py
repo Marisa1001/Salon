@@ -22,3 +22,12 @@ def store():
 def delete(id):
     return contractcontroller.delete(id)   
 
+@contract_router.route('/contracts/<int:id>/edit',methods=['GET'])
+def edit(id):
+    return contractcontroller.edit(id)  
+
+@contract_router.route('/contracts/<int:id>/update',methods=['POST'])
+def update(id):
+    return contractcontroller.update(id)  
+
+

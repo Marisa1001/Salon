@@ -37,4 +37,27 @@ class ContractController():
         flash('El contrato se ha eliminado con exito')
         return redirect(url_for('contract_router.index'))
 
+    def edit(self, _id):
+        contract = Contract.query.get(_id)
+        return render_template('contracts/edit.html', contract = contract)
+
+    def update(self, _id):
+        if request.method == 'POST':
+            clientv = request.form['client']
+            tipev = request.form['tipe']
+            datev = request.form['date']
+            colorv = request.form['color']
+            totalv = request.form['total']
+            #from app.models.Alumno import Alumno
+            contractDB = Contract.query.get(_id)
+            contractDB.client = clientv
+            contractDB.tipe = tipev
+            contractDB.date = datev
+            contractDB.color = colorv
+            contractDB.total = totalv
+            db.session.commit()
+            flash('El contrato se ha editado correctamente!!!')
+            return redirect(url_for('contract_router.index'))
+
+
 contractcontroller = ContractController()
