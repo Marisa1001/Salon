@@ -10,6 +10,6 @@ class User(db.Model):
     cargo = db.Column(db.String(50))
 
     #relacion uno a muchos con contract
-    contract = db.relationship("Contract", back_populates="users")
+   # contract = db.relationship("Contract", back_populates="users")
 
 

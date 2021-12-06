@@ -12,4 +12,8 @@ def index():
 
 @user_router.route('/users/create',methods=['GET'])
 def create():
-    return usercontroller.create()   
+    return usercontroller.create()    
+
+@user_router.route('/users/store',methods=['POST'])
+def store():
+    return usercontroller.store()
