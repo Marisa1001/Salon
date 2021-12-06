@@ -66,6 +66,7 @@
                 <th scope="col">Color Adornado</th>
                 <th scope="col">Total pago</th>
                 <th scope="col">Usuario</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -78,6 +79,7 @@
                 <td>{{data.color}}</td>
                 <td>{{data.total}}</td>
                 <td>{{data.user_id}}</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('contract_router.delete', id = data.id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a></td>
               </tr>
               {% endfor %}
             </tbody>

@@ -17,3 +17,8 @@ def create():
 @contract_router.route('/contracts/store',methods=['POST'])
 def store():
     return contractcontroller.store()   
+
+@contract_router.route('/contracts/<int:id>/delete',methods=['GET'])
+def delete(id):
+    return contractcontroller.delete(id)   
+

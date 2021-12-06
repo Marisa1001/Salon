@@ -67,7 +67,7 @@
                       <h5 class="card-title">{{data.name}}</h5>
                       <p class="card-text">Email : {{data.email}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cargo : {{data.cargo}}</p>
                       <p class="card-text">Nombre de Usuario : {{data.username}}</p>
-                      <a href="#" class="btn btn-primary">Eliminar</a>
+                      <a href="{{url_for('user_router.delete', id = data.id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                     </div>
                   </div>
                 </div>

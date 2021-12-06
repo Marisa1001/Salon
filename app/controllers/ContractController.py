@@ -23,15 +23,18 @@ class ContractController():
             date = request.form['date']
             color = request.form['color']
             total = request.form['total']
-
             #from app.models.Alumno import Alumno
             contractadd = Contract(client = client, tipe = tipe, date = date, color = color, total=total)
-
             db.session.add(contractadd)
             db.session.commit()
-
             flash('El nuevo contrato se ha registrado correctamente!!!')
-
             return redirect(url_for('contract_router.index'))
+
+    def delete(self, _id):
+        contract = Contract.query.get(_id)
+        db.session.delete(contract)
+        db.session.commit()
+        flash('El contrato se ha eliminado con exito')
+        return redirect(url_for('contract_router.index'))
 
 contractcontroller = ContractController()

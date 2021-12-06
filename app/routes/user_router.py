@@ -17,3 +17,7 @@ def create():
 @user_router.route('/users/store',methods=['POST'])
 def store():
     return usercontroller.store()
+
+@user_router.route('/users/<int:id>/delete',methods=['GET'])
+def delete(id):
+    return usercontroller.delete(id)   

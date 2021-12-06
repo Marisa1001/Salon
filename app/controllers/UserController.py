@@ -21,15 +21,18 @@ class UserController():
             username = request.form['username']
             password = request.form['password']
             cargo = request.form['cargo']
-
             #from app.models.Alumno import Alumno
             useradd = User(name = name, email = email, username = username, password = password, cargo=cargo)
-
             db.session.add(useradd)
             db.session.commit()
-
             flash('El nuevo usuario ha sido registrado correctamente!!!')
-
             return redirect(url_for('user_router.index'))
+
+    def delete(self, _id):
+        user = User.query.get(_id)
+        db.session.delete(user)
+        db.session.commit()
+        flash('El usuario se ha eliminado con exito')
+        return redirect(url_for('user_router.index'))
 
 usercontroller = UserController()
