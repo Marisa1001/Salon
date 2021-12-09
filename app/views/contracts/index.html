@@ -25,7 +25,15 @@
             <a class="nav-link mx-1" href="/users">Usuarios</a>
           </li>
         </ul>
+        <form class="d-flex"></form>
         
+        <li class="nav-item" style="list-style:none">
+          Hola, {{current_user.name}}
+        </li>
+
+        <li class="nav-item" style="list-style:none">
+          <a class="nav-link mx-1 " href="{{url_for('auth_router.logout')}}">Cerrar Sesion</a>
+        </li>
       </div>
     </div>
   </nav>
@@ -55,19 +63,18 @@
 
         </div>
         <br>
-        <div class="container"> 
-          <table class="table table-bordered table-light">
+        <div class="container bg-light" > 
+          <table id="mytable" class="display nowrap table-light" style="width:100%">
             <thead>
-              <tr>
-                <!--<th scope="col">#</th>-->
-                <th scope="col">Nombre Cliente</th>
-                <th scope="col">Tipo de Evento</th>
-                <th scope="col">Fecha de Evento</th>
-                <th scope="col">Color Adornado</th>
-                <th scope="col">Total pago</th>
-                <th scope="col">Usuario</th>
-                <th scope="col">Acciones</th>
-              </tr>
+                <tr>
+                  <th>Nombre Cliente</th>
+                  <th>Tipo de Evento</th>
+                  <th>Fecha de Evento</th>
+                  <th>Color Adornado</th>
+                  <th>Total pago</th>
+                 <!-- <th>Usuario</th>-->
+                  <th>Acciones</th>
+                </tr>
             </thead>
             <tbody>
               {% for data in contracts %}
@@ -78,12 +85,25 @@
                 <td>{{data.date}}</td>
                 <td>{{data.color}}</td>
                 <td>{{data.total}}</td>
-                <td>{{data.user_id}}</td>
+                <!--<td>{{data.user_id}}</td>-->
                 <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('contract_router.delete', id = data.id)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('contract_router.edit', id = data.id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a></td>
               </tr>
-              {% endfor %}
+              {% endfor %} 
             </tbody>
-          </table>
+            <tfoot>
+                <tr>
+                  <th>Nombre Cliente</th>
+                  <th>Tipo de Evento</th>
+                  <th>Fecha de Evento</th>
+                  <th>Color Adornado</th>
+                  <th>Total pago</th>
+                  <!--<th>Usuario</th>-->
+                  <th>Acciones</th>
+                </tr>
+            </tfoot>
+        </table>
+
+        
         </div>
   </div>
 </section>
@@ -94,13 +114,28 @@
 <!-- Fin bloque body -->
  
 {% block css%}
- 
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.2.8/css/rowReorder.dataTables.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 {% endblock %}
 <!-- Fin bloque estilos -->
  
 {% block js%}
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 <script>
 
+</script>
+<script>
+  $(document).ready(function() {
+    var table = $('#mytable').DataTable( {
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        responsive: true
+    } );
+} );
 </script>
 {% endblock %}
 <!-- Fin bloque scripts -->

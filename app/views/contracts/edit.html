@@ -25,7 +25,15 @@
             <a class="nav-link mx-1" href="/users">Usuarios</a>
           </li>
         </ul>
+        <form class="d-flex"></form>
         
+        <li class="nav-item" style="list-style:none">
+          Hola, {{current_user.name}}
+        </li>
+
+        <li class="nav-item" style="list-style:none">
+          <a class="nav-link mx-1 " href="{{url_for('auth_router.logout')}}">Cerrar Sesion</a>
+        </li>
       </div>
     </div>
   </nav>

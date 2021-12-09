@@ -6,7 +6,7 @@
   <!-- Fixed navbar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand mx-5" href="/" class="titulogolden">
+      <a class="navbar-brand mx-5" href="" class="titulogolden">
         <img src="https://i.pinimg.com/originals/37/da/a7/37daa7a295d1c30859c0959624187e6a.png" alt="" width="30"
           height="24" class="d-inline-block align-text-top">
         Golden Eventos
@@ -38,52 +38,55 @@
 
 
 <body class="vh-100 gradient-custom">
-  <div class="container-fluid vh-100" style="margin-top:100px">
-    <div class="" style="margin-top:100px">
-      <div class="rounded d-flex justify-content-center">
-        <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-dark">
-
-          {% with messages = get_flashed_messages() %}
-          {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Hey!</strong> {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-
-          {% endfor%}
-          {% endif %}
-          {% endwith%}
-          <div class="text-center">
-            <h3 class="text-white">Iniciar Sesión</h3>
-          </div>
-          <form action="{{url_for('auth_router.login')}}" method="POST" class="needs-validation" novalidate>
-            <div class="p-4">
-              <div class="input-group mb-3">
-                <span class="input-group-text bg-secondary"><i class="fa fa-user text-white"></i></span>
-                <input type="text" name="username" class="form-control" placeholder="Username" required>
-              </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text bg-secondary"><i class="fa fa-key text-white"></i></span>
-                <input type="password" name="password" class="form-control" placeholder="password" required>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Remember Me
-                </label>
-              </div>
-              <button class="btn btn-secondary text-center mt-2" type="submit">
-                Iniciar Sesión
-              </button>
-              
+  <div >
+    <div class="container-fluid vh-100" style="margin-top:100px">
+      <div class="" style="margin-top:100px">
+        <div class="rounded d-flex justify-content-center">
+          <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-dark">
+  
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Hey!</strong> {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-          </form>
+  
+            {% endfor%}
+            {% endif %}
+            {% endwith%}
+            <div class="text-center">
+              <h3 class="text-white">Iniciar Sesión</h3>
+            </div>
+            <form action="{{url_for('auth_router.login')}}" method="POST" class="needs-validation" novalidate>
+              <div class="p-4">
+                <div class="input-group mb-3">
+                  <span class="input-group-text bg-secondary"><i class="fa fa-user text-white"></i></span>
+                  <input type="text" name="username" class="form-control" placeholder="Username" required>
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text bg-secondary"><i class="fa fa-key text-white"></i></span>
+                  <input type="password" name="password" class="form-control" placeholder="password" required>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Remember Me
+                  </label>
+                </div>
+                <button class="btn btn-secondary text-center mt-2" type="submit">
+                  Iniciar Sesión
+                </button>
+                
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</bosy>
+  
+</body>
 
 
 
