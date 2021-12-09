@@ -1,7 +1,15 @@
 
 from flask import render_template, url_for, request, redirect, flash
+import app
 from app.models.Contract import Contract
-from app import db
+from app import db, app
+import pdfkit
+
+app.config['PDF_FOLDER'] = 'app/static/pdf/'
+app.config['TEMPLATE_FOLDER'] = 'app/views/tasks/'
+URL_INDEX_TO_PRINT = 'http://127.0.0.1:5001/tasks'
+WKHTMLTOPDF_PATH = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+
 #definimos clase controlador
 class ContractController():
     def __init__(self):
@@ -59,5 +67,42 @@ class ContractController():
             flash('El contrato se ha editado correctamente!!!')
             return redirect(url_for('contract_router.index'))
 
-
+    def convertpdf(self):
+        config = pdfkit.configuration(wkhtmltopdf=WKHTMLTOPDF_PATH)
+        #htmlfile = app.config['TEMPLATE_FOLDER'] + 'index.html'
+        htmlfile = 'http://127.0.0.1:5001/contracts'
+        #img = ''
+        contracts = Contract.query.all()
+        header = '''
+        
+        
+        '''
+        body = render_template('contracts/index.html', contracts=contracts)
+        footer= '''<p>Fin de todo</p>'''
+        #htmlfile = header+body+footer
+        #htmlfile = "<img src='https://conceptodefinicion.de/wp-content/uploads/2014/05/Imagen-2.jpg'>"
+        
+        pdffile = app.config['PDF_FOLDER'] + 'demo.pdf'
+        options={
+                'page-size': 'Letter',
+                'margin-top': '0.75in',
+                'margin-right': '0.75in',
+                'margin-bottom': '0.75in',
+                'margin-left': '0.75in',
+                'encoding': "UTF-8",
+                'custom-header': [
+                    ('Accept-Encoding', 'gzip')
+                ],
+            }
+        css = 'app/static/css/style.css'
+        try:
+            pdfkit.from_url(htmlfile, pdffile, configuration=config, options=options)
+            #pdfkit.from_file(htmlfile, pdffile,configuration=config, options=options)
+            
+            #pdfkit.from_string(htmlfile, pdffile,configuration=config, options=options)
+            return '''Click para abrir el reporte en pdf: <a href="http://127.0.0.1:5001/static/pdf/demo.pdf">pdf</a>.'''
+        except OSError as e:
+            if 'Done' not in str(e):
+                raise e
+        
 contractcontroller = ContractController()

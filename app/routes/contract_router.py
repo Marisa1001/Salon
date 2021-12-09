@@ -30,4 +30,7 @@ def edit(id):
 def update(id):
     return contractcontroller.update(id)  
 
-
+#print
+@contract_router.route('/convertpdf',methods=['GET'])
+def convertpdf():
+    return contractcontroller.convertpdf()
