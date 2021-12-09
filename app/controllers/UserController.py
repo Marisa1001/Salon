@@ -1,6 +1,6 @@
 from flask import render_template, url_for, request, redirect, flash
 from app.models.User import User
-from app import db
+from app import db, bycrypt
 #definimos clase controlador
 class UserController():
     def __init__(self):
@@ -19,7 +19,8 @@ class UserController():
             name = request.form['name']
             email = request.form['email']
             username = request.form['username']
-            password = request.form['password']
+            #encriptando
+            password = bycrypt.generate_password_hash(request.form['password'])
             cargo = request.form['cargo']
             #from app.models.Alumno import Alumno
             useradd = User(name = name, email = email, username = username, password = password, cargo=cargo)

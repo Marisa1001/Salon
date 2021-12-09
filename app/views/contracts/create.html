@@ -69,28 +69,18 @@
       <input type="date" class="form-control" name="date">
     </div>
     <div class="mb-3">
-      <label for="" class="form-label">Servicios Adicionales</label>
+      <label for="" class="form-label">El contrato del local es de 3000bs </label>
       <br>
-      <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox">
-        <label class="form-check-label" for="inlineCheckbox1">Amplificacion</label>
-      </div>
-      <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox">
-        <label class="form-check-label" for="inlineCheckbox1">Garzones</label>
-      </div>
-      <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox">
-        <label class="form-check-label" for="inlineCheckbox1">Bocaditos</label>
-      </div>
-      <div class="form-check form-check-inline mx-3">
-        <input class="form-check-input" type="checkbox">
-        <label class="form-check-label" for="inlineCheckbox1">Animador</label>
-      </div>
+      <label for="" class="form-label">Servicios Adicionales (cualquier servicio adicional te sale 1000bs mas)</label>
+      <br>
+      Amplificacion<input name="id" id="clt" type="checkbox" value="1000" onclick="sumar()" /><br>
+      Garzones<input name="id" id="clt" type="checkbox" value="1000" onclick="sumar()" /><br>
+      Bocaditos<input name="id" id="clt" type="checkbox" value="1000" onclick="sumar()" /><br>
+      Animador<input name="id" id="clt" type="checkbox" value="1000" onclick="sumar()" /><br>
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Total</label>
-      <input type="number" class="form-control" name="total">
+      <input type="number" class="form-control" id="informacion" name="total" >
     </div>
     <br>
     <button type="submit" class="btn btn-dark">Guardar</button>
@@ -114,6 +104,21 @@
 <script>
 
 </script>
+<script>
+  function sumar(){
+      obj = document.miform['id'];
+      totalChecks = obj.length;
+      totalSumado = 0;
+      for( i=0; i<totalChecks; i++){ 
+          if( obj[i].checked == true ){
+              valor = obj[i].value.split('-');        
+              totalSumado = totalSumado + parseInt(valor[0],10);
+          }
+      }
+     // totalSumado = totalSumado + 3000;
+      document.getElementById('informacion').innerHTML = totalSumado; 
+  }
+  </script>
 {% endblock %}
 <!-- Fin bloque scripts -->
 

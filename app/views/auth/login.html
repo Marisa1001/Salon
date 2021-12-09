@@ -1,0 +1,236 @@
+{% extends 'layouts/app.html' %}
+
+<!-- Inicio bloque body -->
+{% block body %}
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand mx-5" href="/" class="titulogolden">
+        <img src="https://i.pinimg.com/originals/37/da/a7/37daa7a295d1c30859c0959624187e6a.png" alt="" width="30"
+          height="24" class="d-inline-block align-text-top">
+        Golden Eventos
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link active disabled" aria-current="page" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-1" href="/contracts">Contratos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-1" href="/users">Usuarios</a>
+          </li>-->
+
+          <li class="nav-item">
+            <a class="nav-link active mx-1" href="/login">Iniciar Sesion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<body class="vh-100 gradient-custom">
+  <div class="container-fluid vh-100" style="margin-top:100px">
+    <div class="" style="margin-top:100px">
+      <div class="rounded d-flex justify-content-center">
+        <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-dark">
+
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hey!</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+          {% endfor%}
+          {% endif %}
+          {% endwith%}
+          <div class="text-center">
+            <h3 class="text-white">Iniciar Sesión</h3>
+          </div>
+          <form action="{{url_for('auth_router.login')}}" method="POST" class="needs-validation" novalidate>
+            <div class="p-4">
+              <div class="input-group mb-3">
+                <span class="input-group-text bg-secondary"><i class="fa fa-user text-white"></i></span>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text bg-secondary"><i class="fa fa-key text-white"></i></span>
+                <input type="password" name="password" class="form-control" placeholder="password" required>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Remember Me
+                </label>
+              </div>
+              <button class="btn btn-secondary text-center mt-2" type="submit">
+                Iniciar Sesión
+              </button>
+              
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</bosy>
+
+
+
+<!--<div class="container">
+          <h3 class>Gran variedad de </h3>
+          <br>
+          <div class="row">
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/1color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Rojo</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/2color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Naranja</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/3color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Lila</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/4color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Azul</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/5color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Rojo</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/6color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Morado</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/7color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Verde Claro</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/8color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Dorado</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card bg-dark" style="width: 22rem;">
+                <img src="../static/img/9color.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h3>Celeste</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br>
+        </div>-->
+
+
+
+{% endblock %}
+<!-- Fin bloque body -->
+
+{% block css%}
+
+{% endblock %}
+<!-- Fin bloque estilos -->
+
+{% block js%}
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
+<script>
+    function forceLower(strInput){
+      strInput.value = strInput.value.toLowerCase();
+    }
+    //validate input password
+    $('#password, #confirm_password').on('keyup', function() {
+      if ($('#password').val() == '') {
+          $('#message').html('Sin datos').css('color', 'white');
+          $('#confirm_password').css("border-color", "red");
+      } else if ($('#confirm_password').val() == $('input[name="password"]').val() && $('#confirm_password').val().length > 5) {
+          
+          var element = document.getElementById('confirm_password');
+          element.style.border = "";
+          var element = document.getElementById('confirm_password');
+          element.style.border = "2px solid green";
+
+          $('#message').html('Correcto').css('color', 'green');
+
+      } else {
+          $('#message').html('Las contraseñas no coinciden o es menor a 5 caracteres').css('color', 'red');
+          $('#confirm_password').css("border-color", "red");
+      }
+
+  });
+</script>
+
+{% endblock %}
+<!-- Fin bloque scripts -->

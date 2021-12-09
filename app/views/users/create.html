@@ -44,19 +44,19 @@
   <form action="{{url_for('user_router.store')}}" method="POST" >
     <div class="mb-3">
       <label for="user" class="form-label">Nombre y Apellido Usuario</label>
-      <input type="text" class="form-control" name="name">
+      <input type="text" class="form-control" name="name" required>
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Email</label>
-      <input type="email" class="form-control" name="email">
+      <input type="email" class="form-control" name="email" required onkeyup="return forceLower(this)">
     </div>
     <div class="mb-3">
-      <label for="" class="form-label">Nombre de Usuario</label>
-      <input type="text" class="form-control" name="username">
+      <label for="" class="form-label">Nombre de Usuario</label onkeyup="return forceLower(this)">
+      <input type="text" class="form-control" name="username" required>
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Contrasena</label>
-      <input type="password" class="form-control" name="password">
+      <input type="password" class="form-control" name="password" required>
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Cargo</label>
@@ -86,6 +86,11 @@
 {% block js%}
 <script>
 
+</script>
+<script>
+  function forcelower(strInput){
+    strInput.value = strInput.value.toLowerCase()
+  }
 </script>
 {% endblock %}
 <!-- Fin bloque scripts -->
