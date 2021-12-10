@@ -3,9 +3,10 @@ from app.controllers.AuthController import authcontroller
 
 auth_router = Blueprint('auth_router', __name__)
 
-@auth_router.route('/principal',methods=['GET','POST'])
-def principal():
-    return authcontroller.principal()
+@auth_router.route('/',methods=['GET'])
+def main():
+    return authcontroller.index()
+
 
 @auth_router.route('/login',methods=['GET','POST'])
 def login():

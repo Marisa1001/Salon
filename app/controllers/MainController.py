@@ -7,6 +7,6 @@ class MainController():
 
     def index(self):
         #user = {'name': 'Tupaj','surname':'Martinez'}
-        users = User.query.all()
-        return render_template('index.html', users=users)
+        
+        return render_template('home.html')
 maincontroller = MainController()

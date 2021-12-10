@@ -14,8 +14,8 @@ class AuthController():
     def __init__(self):
         pass
 
-    def principal(self):  
-        return render_template('auth/login.html')
+    def index(self):  
+        return render_template('welcome.html')
     
 
     def login(self):

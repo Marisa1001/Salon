@@ -56,8 +56,17 @@
     </div>
     <div class="mb-3">
       <label for="" class="form-label">Tipo de Evento</label>
-      <input type="text" class="form-control" value="{{contract.tipe}}" name="tipe">
+      <select class="form-select" value="{{contract.tipe}}" name="tipe">
+        <!--<option selected>Seleccionar Color Adornado</option>-->
+        <option value="Bautizo">Bautizo</option>
+        <option value="Quinceaños">Quinceaños</option>
+        <option value="Graduacion">Graduacion</option>
+        <option value="Matrimonio">Matrimonio</option>
+        <option value="Conferencia">Conferencia</option>
+        <option value="Confirmacion">Confirmacion</option>
+      </select>
     </div>
+
     <div class="mb-3">
       <label for="" class="form-label">Color</label>
       <select class="form-select" value="{{contract.color}}" name="color">
@@ -76,12 +85,59 @@
       <label for="" class="form-label">Fecha</label>
       <input type="date" class="form-control" value="{{contract.date}}" name="date">
     </div>
-    <div class="mb-3">
-      <label for="" class="form-label">Total</label>
-      <input type="number" class="form-control" value="{{contract.total}}" name="total" disabled>
+    <div class="col-lg-12 mx-5">
+      <label for="" class="form-label">El contrato del local es de 3000bs </label>
+      <br>
+      <label for="" class="form-label">Servicios Adicionales </label>
+      <br> 
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" class="checkbox select-all">{{ ('SELECCIONAR TODO') }}
+        </label>
+      </div>
+      
+      <ul class="detectul list-unstyled row">
+
+        <li class="listitems col-sm-12">
+          <div class="checkbox">
+            <label>
+              <input name="check[]" type="checkbox" class="checkbox" value="2000">
+              &nbsp;Amplificacion 2000 Bs.
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="check[]" type="checkbox" class="checkbox" value="1000">
+              &nbsp;Animador      1000 Bs.
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="check[]" type="checkbox" class="checkbox" value="500">
+              &nbsp;Bocaditos     500 Bs.
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input name="check[]" type="checkbox" class="checkbox" value="1000">
+              &nbsp;Garzones      1500 Bs.
+            </label>
+          </div>
+
+        </li>
+
+
+      </ul>
     </div>
+    <button type="button" onclick="sumSel()" class="btn btn-primary" >Mostrar el Total</button>
     <br>
-    <button type="submit" class="btn btn-dark">Guardar</button>
+    <div class="mb-3">
+      <label for="" class="form-label">Fecha</label>
+      <input type="number" class="form-control"  id="total" value="{{contract.total}}" name="total"><br>
+    </div>
+    <button type="submit" class="btn btn-dark" >Guardar</button>
+    <br>
+   
     <br>
     <br>
     <br>
@@ -102,6 +158,78 @@
 <script>
 
 </script>
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  //process multiple invoices
+  $(document).on('change', '.select-all', function () {
+    if ($(this).is(':checked')) {
+      $('[name="check[]"]').each(function () {
+        $(this).prop('checked', true);
+      });
+    } else {
+      $('[name="check[]"]').each(function () {
+        $(this).prop('checked', false);
+      });
+    }
+  });
+  ///
+  function sumSel() {
+    var array = []
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+    for (var i = 0; i < checkboxes.length; i++) {
+      array.push(checkboxes[i].value)
+    }
+    if (array[0] == 'on' && array.length == 1 || array.length == 0) {
+      var sum = 0;
+      for (var i = 0; i < array.length; i++) {
+        sum = sum + parseInt(array[i]);
+      }
+      sum = sum + 3000
+      Swal.fire(
+        'Contrato procesado!',
+        'La Suma es: ' + sum,
+        'success'
+      )
+      document.getElementById('total').value = sum;
+    } else {
+      if (array[0] == 'on') {
+        array.shift();
+
+      }
+
+      //sumar elementos de arrar
+      var sum = 0;
+      for (var i = 0; i < array.length; i++) {
+        sum = sum + parseInt(array[i]);
+      }
+      sum = sum + 3000
+      Swal.fire(
+        'Contrato procesado!',
+        'La Suma es: ' + sum,
+        'success'
+      )
+      document.getElementById('total').value = sum;
+    }
+  }
+
+  function sumtotal() {
+    var array = []
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+   
+
+      //sumar elementos de arrar
+      var sum = 0;
+      for (var i = 0; i < array.length; i++) {
+        sum = sum + parseInt(array[i]);
+      }
+      sum = sum + 3000
+      document.getElementById('eltotal').innerHTML = sum;
+    
+  }
+</script>
+
 {% endblock %}
 <!-- Fin bloque scripts -->
 
