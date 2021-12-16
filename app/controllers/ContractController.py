@@ -6,8 +6,8 @@ from app import db, app
 import pdfkit
 
 app.config['PDF_FOLDER'] = 'app/static/pdf/'
-app.config['TEMPLATE_FOLDER'] = 'app/views/tasks/'
-URL_INDEX_TO_PRINT = 'http://127.0.0.1:5001/tasks'
+app.config['TEMPLATE_FOLDER'] = 'app/views/contracts/'
+URL_INDEX_TO_PRINT = 'http://127.0.0.1:5001/contracts'
 WKHTMLTOPDF_PATH = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
 
 #definimos clase controlador

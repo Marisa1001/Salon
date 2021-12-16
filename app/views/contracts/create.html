@@ -18,7 +18,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link  mx-1" aria-current="page" href="/">Inicio</a>
+            <a class="nav-link  mx-1" aria-current="page" href="/home">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active mx-1" href="/contracts">Contratos</a>
@@ -51,7 +51,7 @@
 </section>
 
 <div class="container">
-  <form action="{{url_for('contract_router.store')}}" method="POST">
+  <form action="{{url_for('contract_router.store')}}" method="POST"  class="needs-validation" novalidate>
     <div class="mb-3">
       <label for="contract" class="form-label">Nombre y Apellido Cliente</label>
       <input type="text" class="form-control" name="client">
@@ -97,12 +97,15 @@
       Bocaditos<input name="id"  type="checkbox" value="1000" onclick="sumar()" /><br>
       Animador<input name="id"  type="checkbox" value="1000" onclick="sumar()" /><br>
     </div>-->
-    
-    <div class="col-lg-12 mx-5">
+    <div class="col-lg-12">
       <label for="" class="form-label">El contrato del local es de 3000bs </label>
       <br>
       <label for="" class="form-label">Servicios Adicionales </label>
       <br> 
+    </div>
+    
+    <div class="col-lg-12 mx-5">
+      
       <div class="checkbox">
         <label>
           <input type="checkbox" class="checkbox select-all">{{ ('SELECCIONAR TODO') }}
@@ -171,6 +174,55 @@
 <script>
 
 </script>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
+<script>
+    function forceLower(strInput){
+      strInput.value = strInput.value.toLowerCase();
+    }
+    //validate input password
+    $('#password, #confirm_password').on('keyup', function() {
+      if ($('#password').val() == '') {
+          $('#message').html('Sin datos').css('color', 'white');
+          $('#confirm_password').css("border-color", "red");
+      } else if ($('#confirm_password').val() == $('input[name="password"]').val() && $('#confirm_password').val().length > 5) {
+          
+          var element = document.getElementById('confirm_password');
+          element.style.border = "";
+          var element = document.getElementById('confirm_password');
+          element.style.border = "2px solid green";
+
+          $('#message').html('Correcto').css('color', 'green');
+
+      } else {
+          $('#message').html('Las contraseñas no coinciden o es menor a 5 caracteres').css('color', 'red');
+          $('#confirm_password').css("border-color", "red");
+      }
+
+  });
+</script>
+
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

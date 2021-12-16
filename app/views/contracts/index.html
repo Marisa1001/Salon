@@ -1,5 +1,4 @@
 {% extends 'layouts/app.html' %}
- 
 <!-- Inicio bloque body -->
 {% block body %}
 <header>
@@ -16,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link  mx-1" aria-current="page" href="/#">Inicio</a>
+            <a class="nav-link  mx-1" aria-current="page" href="/home">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active mx-1" href="/contracts">Contratos</a>
@@ -109,8 +108,42 @@
       
         <a href="/convertpdf" class="btn btn-secondary"><i class="fa fa-print"></i>Imprimir Reporte de Contratos</a>
   </div>
-</section>
+  <br>
+  <br>
+  <h3>Calendario de eventos registrados</h3>
+  <div class="container bg-darktext-white border-white ">
+    <div id='calendar'></div>
+  </div>
 
+<div id="createEventModal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3 id="myModalLabel1">Create Appointment</h3>
+    </div>
+    <div class="modal-body">
+    <form id="createAppointmentForm" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="inputPatient">Patient:</label>
+            <div class="controls">
+                <input type="text" name="patientName" id="patientName" tyle="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source="[&quot;Value 1&quot;,&quot;Value 2&quot;,&quot;Value 3&quot;]">
+                  <input type="hidden" id="apptStartTime"/>
+                  <input type="hidden" id="apptEndTime"/>
+                  <input type="hidden" id="apptAllDay" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="when">When:</label>
+            <div class="controls controls-row" id="when" style="margin-top:5px;">
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="submitButton">Save</button>
+    </div>
+</div>
+</section>
 
 
 {% endblock %}
@@ -140,5 +173,76 @@
     } );
 } );
 </script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      locale: 'es',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      },
+      dateClick: function(info){
+        alert('La fecha es: ' + info.dateStr);
+        $(this).css('backgound-color', 'red');
+        $("#exampleModal").modal();
+      } ,
+      events: [{"id":"1","client":"Maria Elena Alcala Uriarte","tipe":"Bautizo","date":"2021-12-24","color":"Lila","total":"6500"},{"id":"11","client":"Marisa Rocio Paredes Aguilar","tipe":"Matrimonio","date":"2021-12-26","color":"Verde","total":"5500"},{"id":"12","client":"Carlos Paredes Aguilar","tipe":"Bautizo","date":"2021-12-26","color":"Rojo","total":"3000"},{"id":"13","client":"Gonzalo Sanchez Llanos","tipe":"Bautizo","date":"2021-12-31","color":"Naranja","total":"6500"},{"id":"14","client":"Ediberto Gomez Sanchez","tipe":"Conferencia","date":"2021-12-02","color":"Morado","total":"5500"},{"id":"15","client":"Adelaida Fernandez Gonzales","tipe":"Matrimonio","date":"2021-11-20","color":"Naranja","total":"7500"},{"id":"16","client":"Alejandro Jimenez Loma","tipe":"Quincea\u00f1os","date":"2021-11-27","color":"Rojo","total":"6000"},{"id":"18","client":"Marta Paco Barron","tipe":"Confirmacion","date":"2021-11-20","color":"Naranja","total":"5500"},{"id":"21","client":"saSAsaS","tipe":"Bautizo","date":"2021-12-18","color":"Verde","total":"7500"}]
+
+    });
+
+    calendar.render();
+  });
+  
+
+/*
+  $(document).ready(function() {
+      var calendar = $('#calendar').fullCalendar({
+      defaultView: 'agendaWeek',
+      editable: true,
+        selectable: true,
+      //header and other values
+      select: function(start, end, allDay) {
+          endtime = $.fullCalendar.formatDate(end,'h:mm tt');
+          starttime = $.fullCalendar.formatDate(start,'ddd, MMM d, h:mm tt');
+          var mywhen = starttime + ' - ' + endtime;
+          $('#createEventModal #apptStartTime').val(start);
+          $('#createEventModal #apptEndTime').val(end);
+          $('#createEventModal #apptAllDay').val(allDay);
+          $('#createEventModal #when').text(mywhen);
+          $('#createEventModal').modal('show');
+       }
+    });
+
+  $('#submitButton').on('click', function(e){
+    // We don't want this to act as a link so cancel the link action
+    e.preventDefault();
+
+    doSubmit();
+  });
+
+  function doSubmit(){
+    $("#createEventModal").modal('hide');
+    console.log($('#apptStartTime').val());
+    console.log($('#apptEndTime').val());
+    console.log($('#apptAllDay').val());
+    alert("form submitted");
+        
+    $("#calendar").fullCalendar('renderEvent',
+        {
+            title: $('#patientName').val(),
+            start: new Date($('#apptStartTime').val()),
+            end: new Date($('#apptEndTime').val()),
+            allDay: ($('#apptAllDay').val() == "true"),
+        },
+        true);
+   }
+});*/
+</script>
+
+
 {% endblock %}
 <!-- Fin bloque scripts -->
